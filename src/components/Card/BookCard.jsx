@@ -1,15 +1,34 @@
+import { useState } from "react";
+
 function BookCard({ book }) {
-  if (!book) return <div>No book data</div>;
-  
+  const [imageError, setImageError] = useState(false);
+
   return (
-    <div className="flex flex-col rounded-lg px-6 py-4 bg-white">
-      <img
-        src={book.coverImage}
-        alt={book.title}
-        className="w-full aspect-5/8 object-cover"
-      />
-      <h3 className="text-xs leading-3 mt-3">{book.author}</h3>
-      <h2 className="text-xl font-semibold line-clamp-1">{book.title}</h2>
+    <div className="flex flex-col rounded-lg px-6 py-4 bg-white relative">
+      {/* Badge */}
+      {book.badge && (
+        <div className={`absolute top-2 ${book.badge === 'new' ? 'right-4' : 'left-4'} px-2 py-1 text-xs font-bold text-white rounded ${book.badge === 'new' ? 'bg-green-500' : 'bg-red-500'}`}>
+          {book.badge.toUpperCase()}
+        </div>
+      )}
+      
+      {/* Image */}
+      {book.coverImage && !imageError ? (
+        <img
+          src={book.coverImage}
+          alt={book.title}
+          className="w-full aspect-5/8 object-cover rounded"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <div className="w-full aspect-5/8 bg-gray-200 flex items-center justify-center text-gray-500 rounded">
+          No Image
+        </div>
+      )}
+      <h3 className="text-xs leading-3 mt-3 mb-1">{book.author}</h3>
+      <h2 className="text-lg leading-6 font-semibold line-clamp-3 min-h-21">
+        {book.title}
+      </h2>
       <div className="mt-0.5 flex items-center justify-between w-full">
         <div className="font-semibold text-base text-red-600">${book.saleprice || book.price}</div>
         {book.saleprice && (

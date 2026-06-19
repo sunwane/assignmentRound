@@ -83,27 +83,3 @@ const genreDefinitions = [
 ];
 
 export const genres = enrichGenresWithBookCounts(genreDefinitions, books);
-
-export const recommendedBooks = getBooksByIds(books, [
-  "book-midnight-library",
-  "book-thursday-murder-club",
-  "book-project-hail-mary",
-  "book-braiding-sweetgrass",
-  "book-little-life"
-]);
-
-export const newBooks = getBooksByIds(books, [
-  "book-tomorrow-tomorrow",
-  "book-guest-list",
-  "book-wild-robot",
-  "book-atomic-habits",
-  "book-sun-and-her-flowers"
-]);
-
-export const bestsellerBooks = getBooksByIds(books, [
-  "book-dune",
-  "book-silent-patient",
-  "book-sapiens",
-  "book-normal-people",
-  "book-matilda",
-]);
