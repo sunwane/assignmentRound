@@ -1,0 +1,173 @@
+export const books = [
+  {
+    id: "book-midnight-library",
+    title: "The Midnight Library",
+    author: "Matt Haig",
+    genre: "fiction",
+    price: 15.99,
+    rating: 4.6,
+    description:
+      "Between life and death, Nora Seed discovers a library of lives she might have lived.",
+    coverImage:
+      "https://bookmanager.com/i/m?b=3bfSPEKfdTeqXmLj2md9_g",
+  },
+  {
+    id: "book-tomorrow-tomorrow",
+    title: "Tomorrow, and Tomorrow, and Tomorrow",
+    author: "Gabrielle Zevin",
+    genre: "fiction",
+    price: 15.99,
+    rating: 4.6,
+    coverImage:
+      "https://images.unsplash.com/photo-1524995997479-469142782e12?auto=format&fit=crop&w=480&q=80",
+  },
+  {
+    id: "book-normal-people",
+    title: "Normal People",
+    author: "Sally Rooney",
+    genre: "fiction",
+    price: 15.99,
+    rating: 4.6,
+    coverImage:
+      "https://images.unsplash.com/photo-1524995997479-469142782e12?auto=format&fit=crop&w=480&q=80",
+  },
+  {
+    id: "book-little-life",
+    title: "A Little Life",
+    author: "Hanya Yanagihara",
+    genre: "fiction",
+    price: 15.99,
+    rating: 4.6,
+    description:
+      "Four friends navigate ambition, love, and trauma across decades in New York City.",
+    coverImage:
+      "https://product.hstatic.net/200000896417/product/c75236bbbca84d0ab7603f6d0dc89ffa_eb0193e240ec418088c9cb50d559cbce_grande.jpeg",
+  },
+  {
+    id: "book-guest-list",
+    title: "The Guest List",
+    author: "Lucy Foley",
+    genre: "mystery",
+    price: 5.99,
+    rating: 4.1,
+    coverImage:
+      "https://images.unsplash.com/photo-1524995997479-469142782e12?auto=format&fit=crop&w=480&q=80",
+  },
+  {
+    id: "book-thursday-murder-club",
+    title: "The Thursday Murder Club",
+    author: "Richard Osman",
+    genre: "mystery",
+    price: 1.99,
+    rating: 3.6,
+    description:
+      "Four retirees meet weekly to solve cold cases — until a fresh murder lands on their doorstep.",
+    coverImage:
+      "https://m.media-amazon.com/images/I/71xh8ikTW3L._AC_UF1000,1000_QL80_.jpg",
+  },
+  {
+    id: "book-silent-patient",
+    title: "The Silent Patient",
+    author: "Alex Michaelides",
+    genre: "mystery",
+    price: 2.59,
+    rating: 4.6,
+    coverImage: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=480&q=80",
+  },
+  {
+    id: "book-project-hail-mary",
+    title: "Project Hail Mary",
+    author: "Andy Weir",
+    genre: "sci-fi",
+    price: 6.99,
+    rating: 4.6,
+    description:
+      "A lone astronaut wakes with no memory and one impossible mission to save humanity.",
+    coverImage:
+      "https://m.media-amazon.com/images/I/91ENQs2KLAL._AC_UF1000,1000_QL80_.jpg",
+  },
+  {
+    id: "book-dune",
+    title: "Dune",
+    author: "Frank Herbert",
+    genre: "sci-fi",
+    price: 6.99,
+    rating: 4.6,
+    coverImage:  
+    "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=480&q=80",
+  },
+  {
+    id: "book-three-body-problem",
+    title: "The Three-Body Problem",
+    author: "Liu Cixin",
+    genre: "sci-fi",
+  },
+  {
+    id: "book-devotions",
+    title: "Devotions",
+    author: "Mary Oliver",
+    genre: "poetry",
+  },
+  {
+    id: "book-sun-and-her-flowers",
+    title: "The Sun and Her Flowers",
+    author: "Rupi Kaur",
+    genre: "poetry",
+  },
+  {
+    id: "book-charlottes-web",
+    title: "Charlotte's Web",
+    author: "E.B. White",
+    genre: "children",
+  },
+  {
+    id: "book-wild-robot",
+    title: "The Wild Robot",
+    author: "Peter Brown",
+    genre: "children",
+  },
+  {
+    id: "book-matilda",
+    title: "Matilda",
+    author: "Roald Dahl",
+    genre: "children",
+  },
+  {
+    id: "book-educated",
+    title: "Educated",
+    author: "Tara Westover",
+    genre: "non-fiction",
+  },
+  {
+    id: "book-sapiens",
+    title: "Sapiens",
+    author: "Yuval Noah Harari",
+    genre: "non-fiction",
+    price: 14.99,
+    rating: 4.6,
+    coverImage:
+      "https://m.media-amazon.com/images/I/713jIoMO3UL._AC_UF1000,1000_QL80_.jpg",
+  },
+  {
+    id: "book-atomic-habits",
+    title: "Atomic Habits",
+    author: "James Clear",
+    genre: "non-fiction",
+  },
+  {
+    id: "book-body-keeps-score",
+    title: "The Body Keeps the Score",
+    author: "Bessel van der Kolk",
+    genre: "non-fiction",
+  },
+  {
+    id: "book-braiding-sweetgrass",
+    title: "Braiding Sweetgrass",
+    author: "Robin Wall Kimmerer",
+    genre: "non-fiction",
+    description:
+      "Indigenous wisdom and scientific insight woven into lessons about reciprocity with the living world.",
+    coverImage:
+      "https://m.media-amazon.com/images/I/71OgjPcg6-L._AC_UF1000,1000_QL80_.jpg",
+  },
+];

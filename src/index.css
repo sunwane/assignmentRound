@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+body {
+  font-family: 'Hanken Grotesk', sans-serif;
+  background-color: #F8F9FA;
+  margin: 0;
+}
+
+h1, h2, .title {
+  font-family: 'Playfair Display', serif;
+}
+
+h3, .subtitle, .text, .code, .nav, .button {
+  font-family: 'JetBrains Mono', serif;
+}
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-hanken: 'Hanken Grotesk', sans-serif;
+  --border-color: #c6c6c6;
+  --primary-color: #131B2E;
+  --secondary-color: #000000;
+  --highlight-color: #FED65B;
+  --text-color: #45464D;
+  --secondary-text-color: #76777D;
+  --text-highlight-color: #FED65B;
+  --title-color: #191C1D;
+  --discount-color: #FF0000;
+  --background-color: #F8F9FA;
+  --foreground-color: #F3F4F5;
+}
