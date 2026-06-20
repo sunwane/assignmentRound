@@ -111,7 +111,7 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
             {GENRES.map((genre) => (
               <Link
                 key={genre.id}
-                to={`/shop/${genre.id}`}
+                to={`/${genre.id}`}
                 onClick={onClose}
                 className="
                   block

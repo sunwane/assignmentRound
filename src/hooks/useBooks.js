@@ -42,3 +42,10 @@ export const useBadgedBooks = () => {
     });
   }, []);
 };
+
+export const useBookById = (id) => {
+  return useMemo(() => {
+    const book = getBooksByIds(allBooks, [id])[0];
+    return book || null;
+  }, [id]);
+};

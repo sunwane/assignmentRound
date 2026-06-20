@@ -1,10 +1,10 @@
 export const NAV_LINKS = [
   { path: '/', label: 'Home' },
-  { path: '/shop', label: 'Shop All', isExact: true },
-  { path: '/shop/fiction', label: 'Fiction' },
-  { path: '/shop/mystery', label: 'Mystery' },
-  { path: '/shop/children', label: 'Children' },
-  { path: '/shop/poetry', label: 'Poetry' },
+  { path: '/books', label: 'Shop All', isExact: true },
+  { path: '/fiction', label: 'Fiction' },
+  { path: '/mystery', label: 'Mystery' },
+  { path: '/children', label: 'Children' },
+  { path: '/poetry', label: 'Poetry' },
 ];
 
 export const GENRES = [

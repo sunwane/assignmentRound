@@ -7,7 +7,7 @@ function SearchBar() {
 
   const handleSearch = (e) => {
     if (e.key === 'Enter' && searchInput.trim()) {
-      navigate(`/shop?q=${encodeURIComponent(searchInput)}`);
+      navigate(`/books?q=${encodeURIComponent(searchInput)}`);
       setSearchInput('');
     }
   };

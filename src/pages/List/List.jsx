@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import GridCardLayout from '../../layouts/GridCardLayout/GridCardLayout';
@@ -42,20 +43,30 @@ function ListPage({ genre }) {
     ? `Search: "${searchQuery}"` 
     : genreNames[currentGenre] || 'Books';
 
+  const pagePretitle = searchQuery
+    ? "Results"
+    : (
+        <>
+          <Link to="/">Home</Link>
+          {" / "}
+          {pageTitle}
+        </>
+      );
+
   const handleGenreChange = (newGenre) => {
     setCurrentPage(1);
     setSortBy('default');
     if (newGenre === 'all') {
       if (searchQuery) {
-        navigate(`/shop?q=${encodeURIComponent(searchQuery)}`);
+        navigate(`/books?q=${encodeURIComponent(searchQuery)}`);
       } else {
-        navigate('/shop');
+        navigate('/books');
       }
     } else {
       if (searchQuery) {
-        navigate(`/shop/${newGenre}?q=${encodeURIComponent(searchQuery)}`);
+        navigate(`/${newGenre}?q=${encodeURIComponent(searchQuery)}`);
       } else {
-        navigate(`/shop/${newGenre}`);
+        navigate(`/${newGenre}`);
       }
     }
   };
@@ -68,7 +79,7 @@ function ListPage({ genre }) {
   return (
     <div className="md:px-8 md:py-6 px-4 py-4">
       <div className="flex flex-col gap-2 mb-6 px-8 text-center py-4 bg-linear-to-b from-gray-300 to-gray-200">
-        <HomeListTitle pretitle="Results" title={pageTitle} />
+        <HomeListTitle pretitle={pagePretitle} title={pageTitle} />
         <span className="text-sm text-gray-600">({totalBooks} titles in the collection)</span>
       </div>
 

@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer className="bg-(--primary-color) border-t-2 border-(--border-color)">
       <div className="flex lg:flex-row flex-col justify-between py-8 px-10 md:gap-8 gap-10 max-w-400 mx-auto items-center">
-        <div className="flex-1 max-w-xs items-center flex flex-col text-center">
+        <div className="flex-1 max-w-xs items-center flex flex-col text-center lg:items-start">
           <a href="/" className="flex items-center space-x-2 mb-3 -ml-0.5">
             <h1 className="text-2xl font-black bg-linear-to-b from-blue-400 to-sky-500 px-2.5 pt-0.5 pb-1 text-black">P</h1>
             <h1 className="text-2xl font-black text-white">Page & Co.</h1>
