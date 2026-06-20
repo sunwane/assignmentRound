@@ -49,3 +49,10 @@ export const useBookById = (id) => {
     return book || null;
   }, [id]);
 };
+
+export const useBooksByGenre = (genre) => {
+  return useMemo(() => {
+    if (!genre) return [];
+    return allBooks.filter((book) => book.genre === genre);
+  }, [genre]);
+};

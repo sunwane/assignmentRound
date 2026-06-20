@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useRecommendSlider } from "../../hooks/useRecommendSlider";
-import { useRecommendSliderLayout } from "../../hooks/useVisibleRecommendCount";
+import { useRecommendSlider, useRecommendSliderLayout } from "../../hooks/useRecommendSlider";
 import {
   getBookCoverSrc,
   getCardStepRem,
