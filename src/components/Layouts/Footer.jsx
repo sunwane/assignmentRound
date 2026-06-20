@@ -12,13 +12,13 @@ function Footer() {
           </div>
           <div className="flex items-center space-x-4 mt-4">
             <a href="#" className="text-gray-400 hover:text-gray-200">
-              <img src="/src/assets/linkedin-icon.png" className="w-5 h-5" alt="instagram" />
+              <img src="/src/assets/linkedin-icon.jpg" className="w-5 h-5" alt="instagram" />
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-200">
-              <img src="/src/assets/x-icon.png" className="w-5 h-5" alt="twitter" />
+              <img src="/src/assets/x-icon.jpg" className="w-5 h-5" alt="twitter" />
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-200">
-              <img src="/src/assets/face-icon.png" className="w-5 h-5" alt="facebook" />
+              <img src="/src/assets/face-icon.jpg" className="w-5 h-5" alt="facebook" />
             </a>
           </div>
         </div>

@@ -17,15 +17,15 @@ function CheckoutPage() {
             <h2 className="text-xl md:text-2xl font-bold mb-4">Items in your bag</h2>
 
             {isEmpty ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center text-gray-500">
-                <div className="bag-empty__icon" aria-hidden="true">
-                  <img src="/src/assets/bag-icon.png" alt="" className="w-12 h-12 opacity-40" />
+              <div className="flex flex-col items-center justify-center py-12 text-center text-gray-500 bg-linear-to-b from-gray-200 to-gray-100 rounded">
+                <div className="flex items-center justify-center mb-2">
+                  <img src="/src/assets/bag-icon.jpg" alt="" className="w-12 h-12 opacity-40" />
                 </div>
-                <h3 className="bag-empty__title">Your bag is empty</h3>
-                <p className="bag-empty__text">
+                <h3 className="font-bold text-lg ">Your bag is empty</h3>
+                <p className="">
                   Browse our collection and add books you would like to read.
                 </p>
-                <Link to="/books" className="bag-empty__action">
+                <Link to="/books" className="mt-4 inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
                   Continue Shopping
                 </Link>
               </div>

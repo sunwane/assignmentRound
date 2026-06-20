@@ -164,7 +164,7 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
               "
             >
               <img
-                src="/src/assets/bag-icon.png"
+                src="/src/assets/bag-icon.jpg"
                 className="inline-block w-5 h-5 mr-1"
                 alt="bag"
               />

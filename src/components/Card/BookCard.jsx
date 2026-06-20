@@ -39,7 +39,7 @@ function BookCard({ book }) {
             )}
           </div>
           <div className="flex items-center">
-            <img src="/src/assets/star-icon.png" alt="Star Icon" className="w-3 h-3 mr-1" />
+            <img src="/src/assets/star-icon.jpg" alt="Star Icon" className="w-3 h-3 mr-1" />
             <div className="text-sm text-gray-500">{book.rating}</div>
           </div>
         </div>
