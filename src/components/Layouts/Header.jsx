@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from "../Input/SearchBar";
-import MobileMenu from "../Menu/MobileMenu";
+import MobileMenu from "./MobileMenu";
 import { useNavigation } from '../../hooks/useNavigation';
+import { useBag } from '../../hooks/useBag';
 import { NAV_LINKS } from '../../utils/navConstants';
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Mock state
   const { getLinkClass } = useNavigation();
+  const { totalCount } = useBag();
 
   return (
     <header className="border-b border border-(--border-color)">
@@ -60,9 +62,16 @@ function Header() {
             <button className="flex items-center space-x-1.5 hover:opacity-80 transition">
               <img src="/src/assets/account-icon.png" className="w-6 h-6" alt="user" />
             </button>
-            <button className="hover:opacity-80 transition">
-              <img src="/src/assets/cart-icon.png" className="w-6 h-6" alt="cart" />
-            </button>
+            <div className="relative">
+              <Link to="/bag" className="hover:opacity-80 transition">
+                <img src="/src/assets/bag-icon.png" className="w-6.5 h-6.5" alt="bag" />
+              </Link>
+              {totalCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-bold rounded-full min-w-4 h-4 px-1 flex items-center justify-center">
+                  {totalCount > 99 ? '99+' : totalCount}
+                </span>
+              )}
+            </div>
           </div>
         </div>
 
@@ -72,10 +81,17 @@ function Header() {
             <img src="/src/assets/account-icon.png" className="w-5 h-5" alt="user" />
           </button>
 
-          {/* Mobile Cart Icon */}
-          <button className="hover:opacity-80 transition">
-            <img src="/src/assets/cart-icon.png" className="w-5 h-5" alt="cart" />
-          </button>
+          {/* Mobile Bag Icon */}
+          <div className="relative">
+              <Link to="/bag" className="hover:opacity-80 transition">
+                <img src="/src/assets/bag-icon.png" className="w-5 h-5" alt="bag" />
+              </Link>
+              {totalCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-bold rounded-full min-w-4 h-4 px-1 flex items-center justify-center">
+                  {totalCount > 99 ? '99+' : totalCount}
+                </span>
+              )}
+          </div>
 
           {/* Mobile Search Icon */}
           <button className="hover:opacity-80 transition">

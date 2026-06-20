@@ -41,9 +41,9 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
             h-full
             w-8
             bg-linear-to-l
-            from-blue-950
-            via-blue-800
-            to-blue-700
+            from-blue-800
+            via-blue-600
+            to-blue-500
           "
         >
           {/* Spine texture */}
@@ -88,7 +88,7 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
                 className="
                   block
                   px-6
-                  py-4
+                  py-2.5
                   hover:bg-white/40
                   border-l-4
                   border-transparent
@@ -132,7 +132,7 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
 
           {/* USER */}
           <div className="p-5 space-y-3">
-
+            {/* // fix it when we have api */}
             {isLoggedIn ? (
               <>
                 <div className="font-semibold">
@@ -149,8 +149,13 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
               </button>
             )}
 
-            <button
+            <Link
+              to="/bag"
+              onClick={onClose}
               className="
+                flex
+                items-center
+                justify-center
                 w-full
                 rounded
                 border
@@ -158,8 +163,13 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
                 py-3
               "
             >
-              🛒 Cart
-            </button>
+              <img
+                src="/src/assets/bag-icon.png"
+                className="inline-block w-5 h-5 mr-1"
+                alt="bag"
+              />
+              <div>Your Bag</div>
+            </Link>
 
           </div>
 

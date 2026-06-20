@@ -1,5 +1,6 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useBookById, useBooksByGenre } from "../../hooks/useBooks";
+import { useBag } from "../../hooks/useBag";
 import { useState } from "react";
 import GridCardLayout from "../../layouts/GridCardLayout/GridCardLayout";
 import BookCard from "../../components/Card/BookCard";
@@ -10,8 +11,10 @@ function DetailPage() {
 
   const book = useBookById(id);
   const relatedBooks = useBookById(id) ? useBooksByGenre(book.genre) : [];
+  const { addToBag } = useBag();
 
   const [imageError, setImageError] = useState(false);
+  const [addedFeedback, setAddedFeedback] = useState(false);
 
   if (!book) {
     return (
@@ -97,8 +100,16 @@ function DetailPage() {
             {book.description || "No description available."}
           </div>
           <div className="flex w-full gap-2 mb-4 pb-4 border-b border-(--border-color)">
-            <button className="text-base md:text-lg px-4 py-3 bg-blue-600 text-white hover:bg-blue-700 rounded-xl">
-              Add to Bag - $ {book.saleprice || book.price}
+            <button
+              type="button"
+              onClick={() => {
+                addToBag(book);
+                setAddedFeedback(true);
+                window.setTimeout(() => setAddedFeedback(false), 2000);
+              }}
+              className="text-base md:text-lg px-4 py-3 bg-blue-600 text-white hover:bg-blue-700 rounded-xl"
+            >
+              {addedFeedback ? 'Added to Bag' : `Add to Bag - $${book.saleprice || book.price}`}
             </button>
             <button className="text-base md:text-lg px-4 py-3 bg-gray-600 text-white hover:bg-gray-700 rounded-xl">
               Wishlist
