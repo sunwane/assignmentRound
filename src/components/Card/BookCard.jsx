@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import starIcon from "../../assets/star-icon.jpg";
 
 function BookCard({ book }) {
   const [imageError, setImageError] = useState(false);
@@ -39,7 +40,7 @@ function BookCard({ book }) {
             )}
           </div>
           <div className="flex items-center">
-            <img src="/src/assets/star-icon.jpg" alt="Star Icon" className="w-3 h-3 mr-1" />
+            <img src={starIcon} alt="Star Icon" className="w-3 h-3 mr-1" />
             <div className="text-sm text-gray-500">{book.rating}</div>
           </div>
         </div>

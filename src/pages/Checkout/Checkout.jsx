@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import BagCard from '../../components/Card/BagCard';
 import { useBag } from '../../hooks/useBag';
+import bagIcon from "../../assets/bag-icon.jpg";
 
 function CheckoutPage() {
   const { items, removeFromBag, updateQuantity, subtotal, totalCount, isEmpty } = useBag();
@@ -19,7 +20,7 @@ function CheckoutPage() {
             {isEmpty ? (
               <div className="flex flex-col items-center justify-center py-12 text-center text-gray-500 bg-linear-to-b from-gray-200 to-gray-100 rounded">
                 <div className="flex items-center justify-center mb-2">
-                  <img src="/src/assets/bag-icon.jpg" alt="" className="w-12 h-12 opacity-40" />
+                  <img src={bagIcon} alt="" className="w-12 h-12 opacity-40" />
                 </div>
                 <h3 className="font-bold text-lg ">Your bag is empty</h3>
                 <p className="">

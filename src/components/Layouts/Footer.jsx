@@ -1,3 +1,7 @@
+import linkedInIcon from "../../assets/linkedin-icon.jpg";
+import xIcon from "../../assets/x-icon.jpg";
+import faceIcon from "../../assets/face-icon.jpg";
+
 function Footer() {
   return (
     <footer className="bg-(--primary-color) border-t-2 border-(--border-color)">
@@ -12,13 +16,13 @@ function Footer() {
           </div>
           <div className="flex items-center space-x-4 mt-4">
             <a href="#" className="text-gray-400 hover:text-gray-200">
-              <img src="/src/assets/linkedin-icon.jpg" className="w-5 h-5" alt="instagram" />
+              <img src={linkedInIcon} className="w-5 h-5" alt="instagram" />
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-200">
-              <img src="/src/assets/x-icon.jpg" className="w-5 h-5" alt="twitter" />
+              <img src={xIcon} className="w-5 h-5" alt="twitter" />
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-200">
-              <img src="/src/assets/face-icon.jpg" className="w-5 h-5" alt="facebook" />
+              <img src={faceIcon} className="w-5 h-5" alt="facebook" />
             </a>
           </div>
         </div>

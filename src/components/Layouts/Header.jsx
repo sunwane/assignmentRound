@@ -8,6 +8,8 @@ import { useNavigation } from '../../hooks/useNavigation';
 import { useBag } from '../../hooks/useBag';
 import { useModal } from '../../hooks/useModal';
 import { NAV_LINKS } from '../../utils/navConstants';
+import bagIcon from "../../assets/bag-icon.jpg";
+import accountIcon from "../../assets/account-icon.jpg";
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -141,7 +143,7 @@ function Header() {
             className="hover:opacity-80 transition"
           >
             <img
-              src="/src/assets/account-icon.jpg"
+              src={accountIcon}
               className="w-5 md:w-6 h-5 md:h-6"
               alt="user"
             />
@@ -151,7 +153,7 @@ function Header() {
           <div className="relative">
             <Link to="/bag">
               <img
-                src="/src/assets/bag-icon.jpg"
+                src={bagIcon}
                 className="w-5 md:w-6 h-5 md:h-6"
                 alt="bag"
               />

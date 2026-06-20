@@ -4,6 +4,7 @@ import { useBag } from "../../hooks/useBag";
 import { useState } from "react";
 import GridCardLayout from "../../layouts/GridCardLayout/GridCardLayout";
 import BookCard from "../../components/Card/BookCard";
+import starIcon from "../../assets/star-icon.jpg";
 
 function DetailPage() {
   const { id } = useParams();
@@ -81,7 +82,7 @@ function DetailPage() {
           <h3 className="text-gray-700 mb-4 text-base md:text-xl">by {book.author}</h3>
           <div className="flex items-center gap-2 mb-4">
             <div className="flex items-center justify-center text-sm text-gray-600 md:text-base">
-              <img src="/src/assets/star-icon.jpg" alt="Star Icon" className="w-4 h-4 mr-1 mb-0.5" />
+              <img src={starIcon} alt="Star Icon" className="w-4 h-4 mr-1 mb-0.5" />
               <span className="text-gray-600">{book.rating}</span>
             </div>
             •

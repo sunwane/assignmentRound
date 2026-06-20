@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { GENRES, NAV_LINKS } from '../../utils/navConstants';
+import bagIcon from "../../assets/bag-icon.jpg";
 
 function MobileMenu({ isOpen, onClose, isLoggedIn }) {
   return (
@@ -164,7 +165,7 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
               "
             >
               <img
-                src="/src/assets/bag-icon.jpg"
+                src={bagIcon}
                 className="inline-block w-5 h-5 mr-1"
                 alt="bag"
               />
