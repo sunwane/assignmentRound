@@ -9,6 +9,7 @@ import {
   getViewportSizeRem,
 } from "../../utils/recommendSliderUtils";
 import RecommendCard from "./RecommendCard";
+import { Link } from "react-router-dom";
 
 function NavButton({ onClick, label, children }) {
   return (
@@ -169,7 +170,14 @@ function RecommendCardSlider({ recommends = [] }) {
         <div className="flex grow flex-col justify-center gap-4">
           {titles}
           {cardTrack}
-          <div className="mt-8">{viewAllLink}</div>
+          <div className="mt-8 flex gap-4">
+            <Link to={`/books/${selectedBook.id}`}>
+              <span className="button inline-flex w-fit border border-white/30 text-black bg-(--highlight-color) px-6 py-3 text-sm font-medium uppercase tracking-wider transition hover:border-(--highlight-color) hover:bg-(--highlight-color) hover:text-(--primary-color)">
+                See details
+              </span>
+            </Link>
+            {viewAllLink}
+          </div>
         </div>
 
         <div className="flex w-80 shrink-0 items-center justify-center gap-4 lg:w-md lg:justify-end">

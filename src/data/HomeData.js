@@ -14,6 +14,7 @@ export const heroSliderSlides = [
       "bg-linear-to-br from-[#2c1810] via-[#4a2c1a] to-[#6b3f24]",
     textClass: "text-white",
     accentClass: "text-(--highlight-color)",
+    animationPath: "/src/assets/Book-loading.svg",
   },
   {
     id: "staff-favorites",

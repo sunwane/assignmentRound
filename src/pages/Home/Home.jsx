@@ -101,8 +101,8 @@ function HomePage() {
       <div className="lg:px-8 lg:py-10 md:px-8 md:py-10 px-4 py-8">
         <HomeListTitle pretitle="Most Loved" title="Bestsellers" />
         <GridCardLayout className="mt-4">
-          {bestsellerBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
+          {bestsellerBooks.map((book, index) => (
+            <BookCard key={book.id} book={book} index={index} />
           ))}
         </GridCardLayout>
       </div>
@@ -110,8 +110,8 @@ function HomePage() {
       <div className="lg:px-8 lg:py-10 md:px-8 md:py-10 px-4 py-8">
         <HomeListTitle pretitle="Hot off the press" title="New arrivals" />
         <GridCardLayout className="mt-4">
-          {newBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
+          {newBooks.map((book, index) => (
+            <BookCard key={book.id} book={book} index={index} />
           ))}
         </GridCardLayout>
       </div>

@@ -4,7 +4,7 @@ function HeroSlide({ slide }) {
       className={`relative flex min-h-[40vh] w-full shrink-0 flex-col justify-center px-8 py-16 md:min-h-[70vh] md:px-16 lg:min-h-[90vh] lg:px-24 ${slide.backgroundClass} ${slide.textClass}`}
       aria-labelledby={`hero-slide-title-${slide.id}`}
     >
-      <div className="lg:max-w-2xl md:max-w-xl max-w-lg">
+      <div className="lg:max-w-[54vw] md:max-w-xl max-w-lg">
         <p
           className={`subtitle mb-4 text-xs font-medium uppercase tracking-[0.2em] md:text-sm ${slide.accentClass}`}
         >
@@ -27,6 +27,48 @@ function HeroSlide({ slide }) {
         </a>
       </div>
 
+        <div
+          className="absolute right-20 bottom-15 hidden lg:flex xl:w-[35vw] w-[28vw] h-[80%] items-center justify-center rounded-full
+            aspect-1/3
+            bg-linear-to-br
+            from-white/10
+            via-blue-200/5
+            to-blue-400/10
+
+            border
+            border-white/15
+
+            backdrop-blur-md
+
+            shadow-[0_20px_60px_rgba(0,0,0,.25)]
+
+            overflow-hidden
+          "
+        >
+          {/* glow */}
+          <div
+            className="
+              absolute
+              w-72
+              h-72
+              rounded-full
+              bg-blue-300/20
+              blur-3xl
+            "
+          />
+
+          <img
+            src="/src/assets/Book-loading.svg"
+            alt=""
+            className="
+              relative
+              z-10
+              w-[85%]
+              object-contain
+              animate-[float_6s_ease-in-out_infinite]
+            "
+          />
+        </div>
     </article>
   );
 }

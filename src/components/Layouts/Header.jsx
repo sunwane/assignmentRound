@@ -50,7 +50,7 @@ function Header() {
           {/* MENU */}
           <button
             onClick={toggleMenu}
-            className="lg:hidden rounded p-1 hover:bg-gray-100 transition"
+            className="lg:hidden rounded p-1 hover:bg-gray-100 transition cursor-pointer"
           >
             <svg
               className="w-5 h-5"
@@ -70,7 +70,7 @@ function Header() {
           {/* LOGO */}
           <Link
             to="/"
-            className="flex items-center gap-2 hover:opacity-80 transition"
+            className="flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
           >
             <h1 className="hidden md:block text-xl lg:text-2xl font-black bg-linear-to-b from-gray-700 to-blue-700 px-2 lg:px-3 pt-1 pb-1.5 text-white">
               P
@@ -84,7 +84,7 @@ function Header() {
         </div>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden lg:flex flex-1 justify-center uppercase font-mono tracking-tight">
+        <nav className="hidden lg:flex flex-1 justify-center uppercase font-mono tracking-tight cursor-pointer text-nowrap">
           <div className="flex gap-6">
             {NAV_LINKS.map((link) => (
               <Link
@@ -109,7 +109,7 @@ function Header() {
           {/* SEARCH ICON MOBILE */}
           <button
             onClick={toggleSearch}
-            className="md:hidden hover:opacity-80 transition"
+            className="md:hidden hover:opacity-80 transition cursor-pointer"
           >
             <svg
               className={`w-5 h-5 transition ${
@@ -140,7 +140,7 @@ function Header() {
           {/* ACCOUNT */}
           <button
             onClick={openLogin}
-            className="hover:opacity-80 transition"
+            className="hover:opacity-80 transition cursor-pointer"
           >
             <img
               src={accountIcon}

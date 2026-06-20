@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import starIcon from "../../assets/star-icon.jpg";
 
-function BookCard({ book }) {
+function BookCard({ book, index = 0 }) {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <Link to={`/books/${book.id}`} className="block">
+    <Link to={`/books/${book.id}`} className="block animate-fade-up"
+        style={{ animationDelay: `${index * 120}ms`,
+        animationFillMode: 'both'}}
+      >
       <div className="cursor-pointer hover:shadow-lg flex flex-col rounded-lg px-4 py-2 lg:px-6 lg:py-4 md:px-6 md:py-4 bg-white relative">
         {/* Badge */}
         {book.badge && (
