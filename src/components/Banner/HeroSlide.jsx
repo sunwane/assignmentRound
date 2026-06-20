@@ -1,3 +1,5 @@
+import HeroAnimation from "../../assets/Book-loading.svg";
+
 function HeroSlide({ slide }) {
   return (
     <article
@@ -58,7 +60,7 @@ function HeroSlide({ slide }) {
           />
 
           <img
-            src="/src/assets/Book-loading.svg"
+            src={HeroAnimation}
             alt=""
             className="
               relative
