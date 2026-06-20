@@ -7,83 +7,162 @@ function MobileMenu({ isOpen, onClose, isLoggedIn }) {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/90 z-40 lg:hidden"
           onClick={onClose}
         />
       )}
 
-      {/* Drawer */}
+      {/* BOOK DRAWER */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 z-50 overflow-y-auto ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } lg:hidden`}
+        className={`
+          fixed top-0 left-0
+          h-full w-80
+          bg-(--background-color)
+          shadow-[12px_0_30px_rgba(0,0,0,.18)]
+          overflow-hidden
+          z-50
+          transform transition-transform duration-500
+          rounded-r-md
+          ${
+            isOpen
+              ? 'translate-x-0'
+              : '-translate-x-full'
+          }
+          lg:hidden
+        `}
       >
-        {/* Close Button */}
-        <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-lg font-bold">Menu</h2>
-          <button
-            onClick={onClose}
-            className="text-2xl leading-none"
-          >
-            ×
-          </button>
+
+        {/* BOOK SPINE */}
+        <div
+          className="
+            absolute
+            top-0
+            right-0
+            h-full
+            w-8
+            bg-linear-to-l
+            from-blue-950
+            via-blue-800
+            to-blue-700
+          "
+        >
+          {/* Spine texture */}
+          <div className="absolute left-1 top-0 h-full w-px bg-white/20" />
+
+          <div className="absolute left-3 top-0 h-full w-px bg-black/10" />
         </div>
 
-        {/* Navigation Links */}
-        <nav className="py-4">
-          {NAV_LINKS.map((link) => (
+        {/* CONTENT */}
+        <div className="relative z-10 pr-8">
+
+          {/* HEADER */}
+          <div className="flex justify-between items-center p-5 border-b border-(--border-color)">
             <Link
-              key={link.path}
-              to={link.path}
-              className="block px-4 py-3 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent hover:border-l-4 hover:border-blue-600"
-              onClick={onClose}
+              to="/"
+              className="hover:opacity-80 transition"
             >
-              {link.label}
+              <h1 className="text-xl font-black">
+                Page & Co.
+              </h1>
             </Link>
-          ))}
-        </nav>
 
-        <div className="border-t" />
-
-        {/* Genres Section */}
-        <div className="py-4">
-          <h3 className="px-4 py-2 text-sm font-semibold text-gray-600 uppercase">
-            Browse by Genre
-          </h3>
-          {GENRES.map((genre) => (
-            <Link
-              key={genre.id}
-              to={`/shop/${genre.id}`}
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+            <button
               onClick={onClose}
+              className="
+                text-2xl
+                opacity-70
+                hover:opacity-100
+              "
             >
-              {genre.label}
-            </Link>
-          ))}
-        </div>
-
-        <div className="border-t" />
-
-        {/* User Section */}
-        <div className="py-4 px-4 space-y-3">
-          {isLoggedIn ? (
-            <>
-              <div className="text-sm font-semibold text-gray-700">
-                👤 My Account
-              </div>
-              <button className="w-full px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600 transition">
-                Logout
-              </button>
-            </>
-          ) : (
-            <button className="w-full px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700 transition">
-              Login
+              ×
             </button>
-          )}
+          </div>
 
-          <button className="w-full px-4 py-2 text-sm border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition flex items-center justify-center gap-2">
-            🛒 Cart
-          </button>
+          {/* NAV */}
+          <nav className="py-2">
+            {NAV_LINKS.slice(0, 2).map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={onClose}
+                className="
+                  block
+                  px-6
+                  py-4
+                  hover:bg-white/40
+                  border-l-4
+                  border-transparent
+                  hover:border-blue-700
+                "
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="border-t border-(--border-color)" />
+
+          {/* GENRE */}
+          <div className="py-3">
+            <h3 className="px-6 py-2 text-xs font-bold uppercase opacity-50">
+              Browse by Genre
+            </h3>
+
+            {GENRES.map((genre) => (
+              <Link
+                key={genre.id}
+                to={`/shop/${genre.id}`}
+                onClick={onClose}
+                className="
+                  block
+                  px-6
+                  py-3
+                  hover:bg-white/40
+                  border-l-4
+                  border-transparent
+                  hover:border-blue-700
+                "
+              >
+                {genre.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="border-t border-(--border-color)" />
+
+          {/* USER */}
+          <div className="p-5 space-y-3">
+
+            {isLoggedIn ? (
+              <>
+                <div className="font-semibold">
+                  👤 My Account
+                </div>
+
+                <button className="w-full rounded bg-red-600 py-3 text-white">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button className="w-full rounded bg-blue-700 py-3 text-white">
+                Login
+              </button>
+            )}
+
+            <button
+              className="
+                w-full
+                rounded
+                border
+                border-(--border-color)
+                py-3
+              "
+            >
+              🛒 Cart
+            </button>
+
+          </div>
+
         </div>
       </div>
     </>

@@ -91,14 +91,14 @@ function HomePage() {
   return (
     <div className="w-full">
       <HeroSlider slides={heroSliderSlides} />
-      <div className="px-8 py-10">
+      <div className="lg:px-8 lg:py-10 md:px-8 md:py-10 px-4 py-8">
         <HomeListTitle pretitle="Find Your Shelf" title="Browser by genre" />
         <GenreCardList genres={genres} />
       </div>
-      <div className="px-8 py-10 bg-(--primary-color)">
+      <div className="lg:px-8 lg:py-10 md:px-8 md:py-10 px-4 py-8 bg-(--primary-color)">
         <RecommendCardSlider recommends={recommendedBooks} />
       </div>
-      <div className="px-8 py-10">
+      <div className="lg:px-8 lg:py-10 md:px-8 md:py-10 px-4 py-8">
         <HomeListTitle pretitle="Most Loved" title="Bestsellers" />
         <GridCardLayout className="mt-4">
           {bestsellerBooks.map((book) => (
@@ -107,7 +107,7 @@ function HomePage() {
         </GridCardLayout>
       </div>
       <Banner />
-      <div className="px-8 py-10">
+      <div className="lg:px-8 lg:py-10 md:px-8 md:py-10 px-4 py-8">
         <HomeListTitle pretitle="Hot off the press" title="New arrivals" />
         <GridCardLayout className="mt-4">
           {newBooks.map((book) => (

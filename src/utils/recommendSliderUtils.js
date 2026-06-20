@@ -1,5 +1,29 @@
-export function getVerticalSlideTransform(scrollIndex, cardStepRem) {
-  return `translateY(-${scrollIndex * cardStepRem}rem)`;
+export const RECOMMEND_CARD_HEIGHT_REM = 6.75;
+export const RECOMMEND_CARD_GAP_REM = 0.75;
+export const RECOMMEND_CARD_WIDTH_REM = 13;
+
+export function getCardStepRem(cardSizeRem, cardGapRem = RECOMMEND_CARD_GAP_REM) {
+  return cardSizeRem + cardGapRem;
+}
+
+export function getViewportSizeRem(visibleCount, cardStepRem, cardGapRem = RECOMMEND_CARD_GAP_REM) {
+  return visibleCount * cardStepRem - cardGapRem;
+}
+
+export function getSlideTransform(
+  orientation,
+  scrollIndex,
+  cardStepRem,
+  { useFullWidth = false } = {},
+) {
+  if (useFullWidth && orientation === "horizontal") {
+    return `translateX(-${scrollIndex * 100}%)`;
+  }
+
+  const offset = scrollIndex * cardStepRem;
+  return orientation === "horizontal"
+    ? `translateX(-${offset}rem)`
+    : `translateY(-${offset}rem)`;
 }
 
 export function getRecommendScrollIndex(

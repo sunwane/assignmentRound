@@ -66,7 +66,7 @@ function ListPage({ genre }) {
   };
 
   return (
-    <div className="px-8 py-6">
+    <div className="md:px-8 md:py-6 px-4 py-4">
       <div className="flex flex-col gap-2 mb-6 px-8 text-center py-4 bg-linear-to-b from-gray-300 to-gray-200">
         <HomeListTitle pretitle="Results" title={pageTitle} />
         <span className="text-sm text-gray-600">({totalBooks} titles in the collection)</span>

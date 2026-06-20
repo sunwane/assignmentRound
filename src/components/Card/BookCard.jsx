@@ -4,7 +4,7 @@ function BookCard({ book }) {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="flex flex-col rounded-lg px-6 py-4 bg-white relative">
+    <div className="flex flex-col rounded-lg px-4 py-2 lg:px-6 lg:py-4 md:px-6 md:py-4 bg-white relative">
       {/* Badge */}
       {book.badge && (
         <div className={`absolute top-2 ${book.badge === 'new' ? 'right-4' : 'left-4'} px-2 py-1 text-xs font-bold text-white rounded ${book.badge === 'new' ? 'bg-green-500' : 'bg-red-500'}`}>
@@ -25,15 +25,17 @@ function BookCard({ book }) {
           No Image
         </div>
       )}
-      <h3 className="text-xs leading-3 mt-3 mb-1">{book.author}</h3>
-      <h2 className="text-lg leading-6 font-semibold line-clamp-3 min-h-21">
+      <h3 className="text-[11px] md:text-xs leading-3 mt-3 line-clamp-2">{book.author}</h3>
+      <h2 className="text-base leading-6 font-semibold line-clamp-3 min-h-18 mb-1">
         {book.title}
       </h2>
       <div className="mt-0.5 flex items-center justify-between w-full">
-        <div className="font-semibold text-base text-red-600">${book.saleprice || book.price}</div>
-        {book.saleprice && (
-          <div className="text-gray-500 text-sm line-through">${book.price}</div>
-        )}
+        <div className="flex items-center gap-1.5">
+          <div className="font-semibold text-base text-red-600">${book.saleprice || book.price}</div>
+          {book.saleprice && (
+            <div className="text-gray-500 text-sm line-through">${book.price}</div>
+          )}
+        </div>
         <div className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

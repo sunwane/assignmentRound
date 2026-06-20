@@ -11,13 +11,34 @@ function Header() {
   const { getLinkClass } = useNavigation();
 
   return (
-    <header>
-      <div className="flex items-center justify-between gap-12 lg:gap-20 md:gap-16 px-4 lg:px-8 py-3 border-b border border-(--border-color)">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity shrink-0">
-          <h1 className="text-xl lg:text-2xl font-black bg-linear-to-b from-gray-700 to-blue-700 px-2 lg:px-3 pt-1 pb-1.5 text-white">P</h1>
-          <h1 className="hidden sm:block text-lg lg:text-2xl font-black">Page & Co.</h1>
-        </Link>
+    <header className="border-b border border-(--border-color)">
+      <div className="flex items-center justify-between gap-12 lg:gap-20 md:gap-16 px-4 lg:px-8 py-3 max-w-400 mx-auto">
+        <div className="flex gap-2">
+          {/* Hamburger Menu */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden hover:bg-gray-100 rounded transition text-gray-700"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity shrink-0">
+            <h1 className="hidden lg:block md:block text-xl lg:text-2xl font-black bg-linear-to-b from-gray-700 to-blue-700 px-2 lg:px-3 pt-1 pb-1.5 text-white">P</h1>
+            <h1 className="sm:block md:text-2xl text-xl font-black">Page & Co.</h1>
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex space-x-6 uppercase leading-6 font-mono tracking-tight flex-1 text-nowrap">
@@ -47,9 +68,8 @@ function Header() {
 
         {/* Mobile Right Section */}
         <div className="flex lg:hidden items-center space-x-4 flex-1 justify-end">
-          {/* Mobile Search Icon */}
           <button className="hover:opacity-80 transition">
-            <img src="/src/assets/search-icon.png" className="w-5 h-5" alt="search" />
+            <img src="/src/assets/account-icon.png" className="w-5 h-5" alt="user" />
           </button>
 
           {/* Mobile Cart Icon */}
@@ -57,24 +77,9 @@ function Header() {
             <img src="/src/assets/cart-icon.png" className="w-5 h-5" alt="cart" />
           </button>
 
-          {/* Hamburger Menu */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded transition"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+          {/* Mobile Search Icon */}
+          <button className="hover:opacity-80 transition">
+            <img src="/src/assets/search-icon.png" className="w-5 h-5" alt="search" />
           </button>
         </div>
       </div>

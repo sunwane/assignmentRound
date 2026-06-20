@@ -1,23 +1,46 @@
 import { useEffect, useRef } from "react";
 import { useRecommendSlider } from "../../hooks/useRecommendSlider";
-import { useVisibleRecommendCount } from "../../hooks/useVisibleRecommendCount";
+import { useRecommendSliderLayout } from "../../hooks/useVisibleRecommendCount";
 import {
   getBookCoverSrc,
+  getCardStepRem,
   getFeaturedMonthLabel,
   getRecommendScrollIndex,
-  getVerticalSlideTransform,
+  getSlideTransform,
+  getViewportSizeRem,
 } from "../../utils/recommendSliderUtils";
 import RecommendCard from "./RecommendCard";
 
-const CARD_HEIGHT_REM = 6.75;
-const CARD_GAP_REM = 0.75;
-const CARD_STEP_REM = CARD_HEIGHT_REM + CARD_GAP_REM;
+function NavButton({ onClick, label, children }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/30 bg-white/10 text-white transition hover:border-(--highlight-color) hover:bg-(--highlight-color) hover:text-(--primary-color)"
+      aria-label={label}
+    >
+      <span aria-hidden="true">{children}</span>
+    </button>
+  );
+}
 
 function RecommendCardSlider({ recommends = [] }) {
   const wheelTargetRef = useRef(null);
-  const visibleCount = useVisibleRecommendCount();
+  const {
+    visibleCount,
+    orientation,
+    cardHeightRem,
+    cardWidthRem,
+    cardGapRem,
+    useFullWidth,
+  } = useRecommendSliderLayout();
   const { currentIndex, goToSlide, goToNext, goToPrev, handleWheel } =
     useRecommendSlider(recommends.length);
+
+  const isVertical = orientation === "vertical";
+  const cardSizeRem = isVertical ? cardHeightRem : cardWidthRem;
+  const cardStepRem = getCardStepRem(cardSizeRem, cardGapRem);
+  const viewportSizeRem = getViewportSizeRem(visibleCount, cardStepRem, cardGapRem);
 
   const selectedBook = recommends[currentIndex];
   const featuredMonth = getFeaturedMonthLabel();
@@ -26,7 +49,9 @@ function RecommendCardSlider({ recommends = [] }) {
     recommends.length,
     visibleCount,
   );
-  const viewportHeightRem = visibleCount * CARD_STEP_REM - CARD_GAP_REM;
+  const slideTransform = getSlideTransform(orientation, scrollIndex, cardStepRem, {
+    useFullWidth,
+  });
 
   useEffect(() => {
     const element = wheelTargetRef.current;
@@ -41,6 +66,81 @@ function RecommendCardSlider({ recommends = [] }) {
 
   if (recommends.length === 0) return null;
 
+  const titles = (
+    <>
+      <h3 className="lg:-mb-2 md:-mb-1 text-xs uppercase tracking-wider md:text-md lg:text-lg">
+        Featured this {featuredMonth}
+      </h3>
+      <h2 className="mb-0 max-w-none text-3xl font-bold uppercase md:mb-10 md:max-w-2xl md:text-4xl lg:text-5xl">
+        Loved by our editors
+      </h2>
+    </>
+  );
+
+  const coverImage = selectedBook && (
+    <div className="relative aspect-5/8 w-full max-w-36 overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-2xl sm:max-w-40 md:max-w-sm">
+      <img
+        key={selectedBook.id}
+        src={getBookCoverSrc(selectedBook)}
+        alt={`Cover of ${selectedBook.title}`}
+        className="h-full w-full object-cover transition-opacity duration-500"
+      />
+    </div>
+  );
+
+  const cardTrack = (
+    <div
+      className={`relative overflow-hidden ${useFullWidth || isVertical ? "w-full" : "max-w-full"}`}
+      style={
+        isVertical
+          ? { height: `${viewportSizeRem}rem` }
+          : useFullWidth
+            ? undefined
+            : { width: `${viewportSizeRem}rem`, maxWidth: "100%" }
+      }
+    >
+      <div
+        className={`flex transition-transform duration-500 ease-in-out ${
+          isVertical ? "flex-col gap-3" : useFullWidth ? "flex-row" : "flex-row gap-3"
+        }`}
+        style={{ transform: slideTransform }}
+      >
+        {recommends.map((book, index) => (
+          <div
+            key={book.id}
+            className={useFullWidth ? "w-full shrink-0 basis-full" : "shrink-0"}
+            style={
+              useFullWidth
+                ? { minHeight: `${cardHeightRem}rem` }
+                : isVertical
+                  ? { height: `${cardHeightRem}rem` }
+                  : {
+                      width: `${cardWidthRem}rem`,
+                      height: `${cardHeightRem}rem`,
+                    }
+            }
+          >
+            <RecommendCard
+              book={book}
+              isActive={index === currentIndex}
+              onSelect={() => goToSlide(index)}
+              isCompact={useFullWidth}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const viewAllLink = (
+    <a
+      href="#"
+      className="button inline-flex w-fit border border-white/30 px-6 py-3 text-sm font-medium uppercase tracking-wider text-white transition hover:border-(--highlight-color) hover:bg-(--highlight-color) hover:text-(--primary-color)"
+    >
+      View all
+    </a>
+  );
+
   return (
     <section
       ref={wheelTargetRef}
@@ -48,78 +148,41 @@ function RecommendCardSlider({ recommends = [] }) {
       aria-roledescription="carousel"
       aria-label="Loved by our editors"
     >
-      <div className="flex gap-10 lg:gap-16 ml-8">
-        <div className="flex flex-col justify-center grow gap-4">
-          <h3 className="text-xs uppercase tracking-wider md:text-md lg:text-lg">
-            Featured this {featuredMonth}
-          </h3>
-          <h2 className="uppercase mb-10 max-w-2xl text-3xl leading-6 font-bold md:text-4xl lg:text-5xl">
-            Loved by our editors
-          </h2>
+      <div className="flex w-full flex-col gap-6 md:hidden">
+        <div className="w-full">{titles}</div>
 
-          <div
-            className="relative overflow-hidden"
-            style={{ height: `${viewportHeightRem}rem` }}
-          >
-            <div
-              className="flex lg:flex-col md:flex-col gap-3 transition-transform duration-500 ease-in-out"
-              style={{
-                transform: getVerticalSlideTransform(scrollIndex, CARD_STEP_REM),
-              }}
-            >
-              {recommends.map((book, index) => (
-                <div
-                  key={book.id}
-                  className="shrink-0"
-                  style={{ height: `${CARD_HEIGHT_REM}rem` }}
-                >
-                  <RecommendCard
-                    book={book}
-                    isActive={index === currentIndex}
-                    onSelect={() => goToSlide(index)}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <a
-            href="#"
-            className="button mt-8 inline-flex w-fit border border-white/30 px-6 py-3 text-sm font-medium uppercase tracking-wider text-white transition hover:border-(--highlight-color) hover:bg-(--highlight-color) hover:text-(--primary-color)"
-          >
-            View all
-          </a>
+        <div className="flex w-full items-center justify-center gap-3 px-1">
+          <NavButton onClick={goToPrev} label="Previous recommendation">
+            &larr;
+          </NavButton>
+          {coverImage}
+          <NavButton onClick={goToNext} label="Next recommendation">
+            &rarr;
+          </NavButton>
         </div>
 
-        <div className="flex items-center justify-center gap-4 lg:justify-end shrink-0 lg:w-md md:w-80">
-          <div className="relative aspect-5/8 w-full max-w-xs overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-2xl md:max-w-sm">
-            {selectedBook && (
-              <img
-                key={selectedBook.id}
-                src={getBookCoverSrc(selectedBook)}
-                alt={`Cover of ${selectedBook.title}`}
-                className="h-full w-full object-cover transition-opacity duration-500"
-              />
-            )}
-          </div>
+        <div className="w-full">{cardTrack}</div>
+
+        {viewAllLink}
+      </div>
+
+      <div className="hidden md:ml-8 md:flex md:flex-row md:gap-10 lg:gap-16">
+        <div className="flex grow flex-col justify-center gap-4">
+          {titles}
+          {cardTrack}
+          <div className="mt-8">{viewAllLink}</div>
+        </div>
+
+        <div className="flex w-80 shrink-0 items-center justify-center gap-4 lg:w-md lg:justify-end">
+          {coverImage}
 
           <div className="flex flex-col gap-3">
-            <button
-              type="button"
-              onClick={goToPrev}
-              className="flex h-11 w-11 items-center justify-center border border-white/30 bg-white/10 text-white transition hover:border-(--highlight-color) hover:bg-(--highlight-color) hover:text-(--primary-color)"
-              aria-label="Previous recommendation"
-            >
-              <span aria-hidden="true">&uarr;</span>
-            </button>
-            <button
-              type="button"
-              onClick={goToNext}
-              className="flex h-11 w-11 items-center justify-center border border-white/30 bg-white/10 text-white transition hover:border-(--highlight-color) hover:bg-(--highlight-color) hover:text-(--primary-color)"
-              aria-label="Next recommendation"
-            >
-              <span aria-hidden="true">&darr;</span>
-            </button>
+            <NavButton onClick={goToPrev} label="Previous recommendation">
+              &uarr;
+            </NavButton>
+            <NavButton onClick={goToNext} label="Next recommendation">
+              &darr;
+            </NavButton>
           </div>
         </div>
       </div>

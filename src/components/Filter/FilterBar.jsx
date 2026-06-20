@@ -12,7 +12,7 @@ function FilterBar({ genres, currentGenre, onGenreChange, onSortChange, sortBy }
   ];
 
   return (
-    <div className="mb-3 pb-6 border-b-2 border-(--border-color)/50 flex justify-center flex-col lg:flex-row lg:items-center lg:justify-between">
+    <div className="mb-3 pb-6 border-b-2 border-(--border-color)/50 flex justify-center flex-col lg:flex-row lg:items-center lg:justify-between gap-2 lg:text-base text-sm">
       <div className="flex flex-wrap gap-2">
         {/* All Button */}
         <button
